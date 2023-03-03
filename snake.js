@@ -6,6 +6,7 @@ const ctx = canvas.getContext("2d");
 let snake = [{ x: 10, y: 10 }];
 let direction = "right";
 let food = getRandomFood();
+let score = 0;
 
 // Set up the game loop
 setInterval(gameLoop, 100);
@@ -54,6 +55,7 @@ function gameLoop() {
     // Check for collision with food
     if (head.x === food.x && head.y === food.y) {
         food = getRandomFood();
+        score += 10;
     } else {
         snake.pop();
     }
@@ -81,7 +83,7 @@ function gameLoop() {
 
 
 function gameOver() {
-    alert("Game over!");
+    alert("Game over! Score: " + score);
     location.reload();
 }
 
